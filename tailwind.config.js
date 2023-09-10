@@ -5,10 +5,16 @@ module.exports = {
     extend: {
       width: {
         '282': '282px',
+        '191': '191px'
       },
       height: {
+        '54': '54px',
+        '69.87': '69.87px',
+        '100': '100px',
+        '115': '115px',
         '90': '90px',
-        '69.87': '69.87px'
+        '94': '94px',
+        '380': '380px',
       },
       colors: { 
         'pastel-yellow': '#F4D473',
@@ -20,7 +26,7 @@ module.exports = {
         body: ['Palanquin Dark']
       },
       boxShadow: {
-        'custom': '0 5px 10px 0 rgba(0, 0, 0, 0.5)'
+        'custom': '4px 5px 10px 0 rgba(0, 0, 0, 0.5)'
       },
     },
   },

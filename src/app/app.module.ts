@@ -12,7 +12,7 @@ import { BannerComponent } from './component/banner/banner.component';
     AppComponent,
     NavBarComponent,
     ButtonComponent,
-    BannerComponent
+    BannerComponent,
   ],
   imports: [
     BrowserModule,
