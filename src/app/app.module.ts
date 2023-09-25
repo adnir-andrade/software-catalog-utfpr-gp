@@ -10,16 +10,27 @@ import { ButtonComponent } from './component/button/button.component';
 import { BannerComponent } from './component/banner/banner.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionComponent } from './component/accordion/accordion.component';
+import { TesteComponent } from './component/teste/teste.component';
+import { SalasComponent } from './component/salas/salas.component';
+import { MainComponent } from './component/main/main.component';
+import { TestComponent } from './component/test/test.component';
+import { ComponenteComponent } from './componente/componente.component';
 
-@NgModule({
+  @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     ButtonComponent,
     BannerComponent,
     AccordionComponent,
+    TesteComponent,
+    SalasComponent,
+    MainComponent,
+    TestComponent,
+    ComponenteComponent,
   ],
   imports: [
+    AppRoutingModule,
     MatSlideToggleModule,
     BrowserModule,
     AppRoutingModule,
