@@ -13,8 +13,6 @@ import { AccordionComponent } from './component/accordion/accordion.component';
 import { TesteComponent } from './component/teste/teste.component';
 import { SalasComponent } from './component/salas/salas.component';
 import { MainComponent } from './component/main/main.component';
-import { TestComponent } from './component/test/test.component';
-import { ComponenteComponent } from './componente/componente.component';
 
   @NgModule({
   declarations: [
@@ -26,8 +24,6 @@ import { ComponenteComponent } from './componente/componente.component';
     TesteComponent,
     SalasComponent,
     MainComponent,
-    TestComponent,
-    ComponenteComponent,
   ],
   imports: [
     AppRoutingModule,

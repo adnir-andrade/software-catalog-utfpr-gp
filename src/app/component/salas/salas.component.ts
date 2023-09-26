@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./salas.component.css']
 })
 export class SalasComponent {
-  blocks : string[] = ['Bloco B', 'Bloco C', 'Bloco F', 'Bloco H', 'DEBIB'];
+
+  /*blocks = ['Bloco F', 'Bloco F', 'Bloco H']*/
+    
+  
 }
