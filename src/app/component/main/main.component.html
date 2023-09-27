@@ -1,2 +1,6 @@
 <app-banner class="text-center flex justify-center"></app-banner>
-<app-button routerLink="/salas" class=" flex justify-center mx-20"></app-button>
+<app-button
+  [buttonNames]="names"
+  routerLink="/salas"
+  class="flex justify-center mx-20"
+></app-button>
