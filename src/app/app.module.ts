@@ -11,10 +11,10 @@ import { BannerComponent } from './component/banner/banner.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionComponent } from './component/accordion/accordion.component';
 import { TesteComponent } from './component/teste/teste.component';
-import { SalasComponent } from './component/salas/salas.component';
+import { BlocosComponent } from './component/blocos/blocos.component';
 import { MainComponent } from './component/main/main.component';
 
-  @NgModule({
+@NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
@@ -22,7 +22,7 @@ import { MainComponent } from './component/main/main.component';
     BannerComponent,
     AccordionComponent,
     TesteComponent,
-    SalasComponent,
+    BlocosComponent,
     MainComponent,
   ],
   imports: [
