@@ -5,4 +5,5 @@ export interface Laboratory {
   block?: string;
   computerAmount?: number;
   softwares?: Software[];
+  _id?: string;
 }
