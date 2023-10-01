@@ -2,6 +2,7 @@ import * as dotenv from 'dotenv';
 import cors from 'cors';
 import express from 'express';
 import { connectToDatabase } from './database';
+import { blockRouter } from './block.routes';
 
 // Load environment variables from the .env file, where the ATLAS_URI is configured
 dotenv.config();
@@ -19,6 +20,8 @@ connectToDatabase(ATLAS_URI)
   .then(() => {
     const app = express();
     app.use(cors());
+
+    app.use('/employees', blockRouter);
 
     // start the Express server
     app.listen(5200, () => {
