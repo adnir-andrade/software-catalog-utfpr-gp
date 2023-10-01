@@ -21,7 +21,7 @@ connectToDatabase(ATLAS_URI)
     const app = express();
     app.use(cors());
 
-    app.use('/employees', blockRouter);
+    app.use('/blocks', blockRouter);
 
     // start the Express server
     app.listen(5200, () => {
