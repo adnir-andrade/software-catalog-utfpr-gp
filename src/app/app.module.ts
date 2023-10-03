@@ -14,6 +14,7 @@ import { AccordionComponent } from './component/accordion/accordion.component';
 import { TesteComponent } from './component/teste/teste.component';
 import { BlocosComponent } from './component/blocos/blocos.component';
 import { MainComponent } from './component/main/main.component';
+import { LaboratoriesComponent } from './component/laboratories/laboratories.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MainComponent } from './component/main/main.component';
     TesteComponent,
     BlocosComponent,
     MainComponent,
+    LaboratoriesComponent,
   ],
   imports: [
     AppRoutingModule,

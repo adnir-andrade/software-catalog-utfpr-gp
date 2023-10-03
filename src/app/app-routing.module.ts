@@ -6,6 +6,7 @@ import { BannerComponent } from './component/banner/banner.component';
 import { TesteComponent } from './component/teste/teste.component';
 import { MainComponent } from './component/main/main.component';
 import { BlocosComponent } from './component/blocos/blocos.component';
+import { LaboratoriesComponent } from './component/laboratories/laboratories.component';
 
 const routes: Routes = [
   { path: 'nav-bar', component: NavBarComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'teste', component: TesteComponent },
   { path: '', component: MainComponent },
   { path: 'blocos', component: BlocosComponent },
+  { path: 'laboratories', component: LaboratoriesComponent},
 ];
 
 @NgModule({
