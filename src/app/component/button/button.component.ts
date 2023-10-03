@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./button.component.css'],
 })
 export class ButtonComponent {
-  @Input({ required: true }) buttonNames!: string[];
+  @Input({ required: true }) buttonName!: string;
 }
