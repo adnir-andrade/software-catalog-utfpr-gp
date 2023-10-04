@@ -4,6 +4,13 @@ Este projeto tem como objetivo auxiliar no cadastro de softwares que serão util
 
 O frontend da aplicação está sendo desenvolvido com Angular, Tailwind CSS e DaisyUI, e - a título de estudo - será implementado banco de dados MongoDB.
 
+## Instrução para execução
+
+- Após descompactar o projeto, entrar através do terminal no diretório /server/
+- Utilizar "npm i" para instalar as dependências
+- Dentro do diretório /server/, exercutar o comando: npx ts-node src/server.ts
+- No diretório raíz /src/, executar o comando "ng serve" (O diretório src será colocado em um novo diretório chamado "frontend" em breve)
+
 ## Endereço de Deploy
 
 // Será atualizado ao final do projeto
