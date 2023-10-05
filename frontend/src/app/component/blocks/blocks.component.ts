@@ -4,11 +4,11 @@ import { Block } from '../../block';
 import { BlockService } from '../../block.service';
 
 @Component({
-  selector: 'app-blocos',
-  templateUrl: './blocos.component.html',
-  styleUrls: ['./blocos.component.css'],
+  selector: 'app-blocks',
+  templateUrl: './blocks.component.html',
+  styleUrls: ['./blocks.component.css'],
 })
-export class BlocosComponent implements OnInit {
+export class BlocksComponent implements OnInit {
   blocks$: Observable<Block[]> = new Observable();
 
   constructor(private blockService: BlockService) {}

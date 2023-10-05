@@ -11,8 +11,7 @@ import { ButtonComponent } from './component/button/button.component';
 import { BannerComponent } from './component/banner/banner.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionComponent } from './component/accordion/accordion.component';
-import { TesteComponent } from './component/teste/teste.component';
-import { BlocosComponent } from './component/blocos/blocos.component';
+import { BlocksComponent } from './component/blocks/blocks.component';
 import { MainComponent } from './component/main/main.component';
 import { LaboratoriesComponent } from './component/laboratories/laboratories.component';
 
@@ -23,8 +22,7 @@ import { LaboratoriesComponent } from './component/laboratories/laboratories.com
     ButtonComponent,
     BannerComponent,
     AccordionComponent,
-    TesteComponent,
-    BlocosComponent,
+    BlocksComponent,
     MainComponent,
     LaboratoriesComponent,
   ],
