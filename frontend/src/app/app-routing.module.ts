@@ -4,7 +4,7 @@ import { NavBarComponent } from './component/nav-bar/nav-bar.component';
 import { ButtonComponent } from './component/button/button.component';
 import { BannerComponent } from './component/banner/banner.component';
 import { MainComponent } from './component/main/main.component';
-import { BlocosComponent } from './component/blocos/blocos.component';
+import { BlocksComponent } from './component/blocks/blocks.component';
 import { LaboratoriesComponent } from './component/laboratories/laboratories.component';
 
 const routes: Routes = [
@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'button', component: ButtonComponent },
   { path: 'banner', component: BannerComponent },
   { path: '', component: MainComponent },
-  { path: 'blocos', component: BlocosComponent },
+  { path: 'blocos', component: BlocksComponent },
   { path: 'laboratories', component: LaboratoriesComponent},
 ];
 
