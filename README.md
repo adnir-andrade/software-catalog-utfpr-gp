@@ -6,10 +6,12 @@ O frontend da aplicação está sendo desenvolvido com Angular, Tailwind CSS e D
 
 ## Instrução para execução
 
-- Após descompactar o projeto, entrar através do terminal no diretório /server/
+- Após descompactar o projeto, entrar através do terminal no diretório /backend/
 - Utilizar "npm i" para instalar as dependências
-- Dentro do diretório /server/, exercutar o comando: npx ts-node src/server.ts
-- No diretório raíz /src/, executar o comando "ng serve" (O diretório src será colocado em um novo diretório chamado "frontend" em breve)
+- Dentro do diretório /backend/, exercutar o comando: npx ts-node src/server.ts
+- Entrar através do terminal no diretório /frontend/
+- Utilizar "npm i" para instalar as dependências
+- Executar o comando "ng serve"
 
 ## Endereço de Deploy
 
