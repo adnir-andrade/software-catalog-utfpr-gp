@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as mongodb from 'mongodb';
 import { collections } from './database';
-import { Laboratory, Software } from './block';
+import { Block, Laboratory, Software } from './block';
 
 export const router = express.Router();
 router.use(express.json());
@@ -15,13 +15,25 @@ router.get('/', async (_req, res) => {
   }
 });
 
+const getBlock = (id : string) => {
+  const query = { _id : new mongodb.ObjectId(id) };
+  return collections.blocks.findOne(query);
+};
+
+const getLab = (block : Block, id : string) => {
+  return block?.laboratories[parseInt(id)];
+};
+
+const getSoftware = (lab : Laboratory, id : string) => {
+  return lab?.softwares[parseInt(id)];
+};
+
 // blocks
 
 router.get('/:id', async (req, res) => {
   try {
     const id = req?.params?.id;
-    const query = { _id: new mongodb.ObjectId(id) };
-    const block = await collections.blocks.findOne(query);
+    const block = await getBlock(id);
 
     if (block) {
       res.status(200).send(block);
@@ -94,8 +106,7 @@ router.delete('/:id', async (req, res) => {
 router.get('/:id_block/labs', async (req, res) => {
   try {
     const id = req?.params?.id_block;
-    const query = { _id: new mongodb.ObjectId(id) };
-    const block = await collections.blocks.findOne(query);
+    const block = await getBlock(id);
     const labs = block.laboratories || [];
 
     if (labs) {
@@ -112,9 +123,8 @@ router.get('/:id_block/labs/:id_lab', async (req, res) => {
   try {
     const idBlock = req?.params?.id_block;
     const idLab = req?.params?.id_lab;
-    const query = { _id: new mongodb.ObjectId(idBlock) };
-    const block = await collections.blocks.findOne(query);
-    const lab : Laboratory = block.laboratories[parseInt(idLab)];
+    const block = await getBlock(idBlock);
+    const lab : Laboratory = getLab(block, idLab);
 
     if (lab) {
       res.status(200).send(lab);
@@ -131,9 +141,9 @@ router.get('/:id_block/labs/:id_lab/softwares', async (req, res) => {
   try {
     const idBlock = req?.params?.id_block;
     const idLab = req?.params?.id_lab;
-    const query = { _id: new mongodb.ObjectId(idBlock) };
-    const block = await collections.blocks.findOne(query);
-    const lab : Laboratory = block.laboratories[parseInt(idLab)];
+
+    const block = await getBlock(idBlock);
+    const lab : Laboratory = getLab(block, idLab);
     const softwares = lab.softwares || [];
 
     if (softwares) {
@@ -151,10 +161,10 @@ router.get('/:id_block/labs/:id_lab/softwares/:id_software', async (req, res) =>
     const idBlock = req?.params?.id_block;
     const idLab = req?.params?.id_lab;
     const idSoftware = req?.params?.id_software;
-    const query = { _id: new mongodb.ObjectId(idBlock) };
-    const block = await collections.blocks.findOne(query);
-    const lab : Laboratory = block.laboratories[parseInt(idLab)];
-    const software : Software = lab.softwares[parseInt(idSoftware)];
+
+    const block = await getBlock(idBlock);
+    const lab : Laboratory = getLab(block, idLab);
+    const software : Software = getSoftware(lab, idSoftware);
 
     if (software) {
       res.status(200).send(software);
