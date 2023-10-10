@@ -1,11 +1,12 @@
 import * as express from 'express';
 import * as mongodb from 'mongodb';
 import { collections } from './database';
+import { Laboratory, Software } from './block';
 
-export const blockRouter = express.Router();
-blockRouter.use(express.json());
+export const router = express.Router();
+router.use(express.json());
 
-blockRouter.get('/', async (_req, res) => {
+router.get('/', async (_req, res) => {
   try {
     const blocks = await collections.blocks.find({}).toArray();
     res.status(200).send(blocks);
@@ -14,7 +15,9 @@ blockRouter.get('/', async (_req, res) => {
   }
 });
 
-blockRouter.get('/:id', async (req, res) => {
+// blocks
+
+router.get('/:id', async (req, res) => {
   try {
     const id = req?.params?.id;
     const query = { _id: new mongodb.ObjectId(id) };
@@ -30,7 +33,7 @@ blockRouter.get('/:id', async (req, res) => {
   }
 });
 
-blockRouter.post('/', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const block = req.body;
     const result = await collections.blocks.insertOne(block);
@@ -46,7 +49,7 @@ blockRouter.post('/', async (req, res) => {
   }
 });
 
-blockRouter.put('/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const id = req?.params?.id;
     const block = req.body;
@@ -68,7 +71,7 @@ blockRouter.put('/:id', async (req, res) => {
   }
 });
 
-blockRouter.delete('/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const id = req?.params?.id;
     const query = { _id: new mongodb.ObjectId(id) };
@@ -84,5 +87,81 @@ blockRouter.delete('/:id', async (req, res) => {
   } catch (error) {
     console.error(error.message);
     res.status(400).send(error.message);
+  }
+});
+
+// laboratories
+router.get('/:id_block/labs', async (req, res) => {
+  try {
+    const id = req?.params?.id_block;
+    const query = { _id: new mongodb.ObjectId(id) };
+    const block = await collections.blocks.findOne(query);
+    const labs = block.laboratories || [];
+
+    if (labs) {
+      res.status(200).send(labs);
+    } else {
+      res.status(404).send(`Failed to find a block: ID ${id}`);
+    }
+  } catch (error) {
+    res.status(404).send(`Failed to find a block: ID ${req?.params?.id_block}`);
+  }
+});
+
+router.get('/:id_block/labs/:id_lab', async (req, res) => {
+  try {
+    const idBlock = req?.params?.id_block;
+    const idLab = req?.params?.id_lab;
+    const query = { _id: new mongodb.ObjectId(idBlock) };
+    const block = await collections.blocks.findOne(query);
+    const lab : Laboratory = block.laboratories[parseInt(idLab)];
+
+    if (lab) {
+      res.status(200).send(lab);
+    } else {
+      res.status(404).send(`Failed to find a block: ID ${idBlock}`);
+    }
+  } catch (error) {
+    res.status(404).send(`Failed to find a block: ID ${req?.params?.id_block}`);
+  }
+});
+
+// softwares
+router.get('/:id_block/labs/:id_lab/softwares', async (req, res) => {
+  try {
+    const idBlock = req?.params?.id_block;
+    const idLab = req?.params?.id_lab;
+    const query = { _id: new mongodb.ObjectId(idBlock) };
+    const block = await collections.blocks.findOne(query);
+    const lab : Laboratory = block.laboratories[parseInt(idLab)];
+    const softwares = lab.softwares || [];
+
+    if (softwares) {
+      res.status(200).send(softwares);
+    } else {
+      res.status(404).send(`Failed to find a block: ID ${idBlock}`);
+    }
+  } catch (error) {
+    res.status(404).send(`Failed to find a block: ID ${req?.params?.id_block}`);
+  }
+});
+
+router.get('/:id_block/labs/:id_lab/softwares/:id_software', async (req, res) => {
+  try {
+    const idBlock = req?.params?.id_block;
+    const idLab = req?.params?.id_lab;
+    const idSoftware = req?.params?.id_software;
+    const query = { _id: new mongodb.ObjectId(idBlock) };
+    const block = await collections.blocks.findOne(query);
+    const lab : Laboratory = block.laboratories[parseInt(idLab)];
+    const software : Software = lab.softwares[parseInt(idSoftware)];
+
+    if (software) {
+      res.status(200).send(software);
+    } else {
+      res.status(404).send(`Failed to find a block: ID ${idBlock}`);
+    }
+  } catch (error) {
+    res.status(404).send(`Failed to find a block: ID ${req?.params?.id_block}`);
   }
 });
