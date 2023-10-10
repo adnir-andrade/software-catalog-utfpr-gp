@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, tap } from 'rxjs';
 import { Block } from './block';
+import { Laboratory } from './laboratory';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +10,7 @@ import { Block } from './block';
 export class BlockService {
   private url = 'http://localhost:5200';
   private blocks$: Subject<Block[]> = new Subject();
+  private labs$: Subject<Laboratory[]> = new Subject();
 
   constructor(private httpClient: HttpClient) {}
 
@@ -18,6 +20,14 @@ export class BlockService {
     });
   }
 
+  private refreshLabs(blockId: string) {
+    this.httpClient
+      .get<Laboratory[]>(`${this.url}/blocks/${blockId}/labs`)
+      .subscribe((labs) => {
+        this.labs$.next(labs);
+      });
+  }
+
   getBlocks(): Subject<Block[]> {
     this.refreshBlocks();
     return this.blocks$;
@@ -25,6 +35,11 @@ export class BlockService {
 
   getBlock(id: string): Observable<Block> {
     return this.httpClient.get<Block>(`${this.url}/blocks/${id}`);
+  }
+
+  getLabs(idBlock: string, idLab: string): Observable<Laboratory[]> {
+    this.refreshLabs(idBlock);
+    return this.labs$;
   }
 
   createBlock(block: Block): Observable<string> {
