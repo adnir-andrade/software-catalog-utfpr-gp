@@ -20,7 +20,9 @@ module.exports = {
         'pastel-yellow': '#F4D473',
         'mustard-yellow': '#F2C029',
         'olive-yellow': ' #BF9821',
-        'light gray': '#EAEAEA'
+        'light gray': '#EAEAEA',
+        'marrom-form': '#736436',
+        'cinza-meia-noite': '#343A40',
       },
       fontFamily: {
         body: ['Palanquin Dark']

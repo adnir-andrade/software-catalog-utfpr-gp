@@ -14,6 +14,9 @@ import { AccordionComponent } from './component/accordion/accordion.component';
 import { BlocksComponent } from './component/blocks/blocks.component';
 import { MainComponent } from './component/main/main.component';
 import { LaboratoriesComponent } from './component/laboratories/laboratories.component';
+import { FormComponent } from './component/form/form.component';
+import { InputComponent } from './component/input/input.component';
+import { SelectComponent } from './component/select/select.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { LaboratoriesComponent } from './component/laboratories/laboratories.com
     BlocksComponent,
     MainComponent,
     LaboratoriesComponent,
+    FormComponent,
+    InputComponent,
+    SelectComponent,
   ],
   imports: [
     AppRoutingModule,
