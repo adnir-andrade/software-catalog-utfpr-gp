@@ -4,10 +4,13 @@ module.exports = {
   theme: {
     extend: {
       width: {
+        '191': '191px',
+        '259': '259px',
         '282': '282px',
-        '191': '191px'
+        '287': '287px'
       },
       height: {
+        '28': '28px',
         '54': '54px',
         '69.87': '69.87px',
         '100': '100px',
@@ -15,6 +18,7 @@ module.exports = {
         '90': '90px',
         '94': '94px',
         '380': '380px',
+        '708': '708px',
       },
       colors: { 
         'pastel-yellow': '#F4D473',
