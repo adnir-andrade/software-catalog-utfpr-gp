@@ -14,8 +14,8 @@ const routes: Routes = [
   { path: 'banner', component: BannerComponent },
   { path: '', component: MainComponent },
   { path: 'blocos', component: BlocksComponent },
-  { path: 'laboratories', component: LaboratoriesComponent},
-  { path: 'form', component: FormComponent},
+  { path: ':blockId/labs', component: LaboratoriesComponent },
+  { path: 'form', component: FormComponent },
 ];
 
 @NgModule({

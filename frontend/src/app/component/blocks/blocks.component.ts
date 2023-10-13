@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Block } from '../../block';
 import { BlockService } from '../../block.service';
@@ -11,7 +12,7 @@ import { BlockService } from '../../block.service';
 export class BlocksComponent implements OnInit {
   blocks$: Observable<Block[]> = new Observable();
 
-  constructor(private blockService: BlockService) {}
+  constructor(private blockService: BlockService, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchBlocks();
@@ -19,5 +20,9 @@ export class BlocksComponent implements OnInit {
 
   private fetchBlocks(): void {
     this.blocks$ = this.blockService.getBlocks();
+  }
+
+  navigateToLabs(blockId: string): void {
+    this.router.navigate([blockId, 'labs']);
   }
 }
