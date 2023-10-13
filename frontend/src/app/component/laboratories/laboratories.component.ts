@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Laboratory } from '../../laboratory';
 import { BlockService } from '../../block.service';
@@ -11,15 +12,19 @@ import { BlockService } from '../../block.service';
 export class LaboratoriesComponent implements OnInit {
   labs$: Observable<Laboratory[]> = new Observable();
 
-  constructor(private blockService: BlockService) {}
+  constructor(
+    private blockService: BlockService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.fetchLabs();
+    this.route.params.subscribe((params) => {
+      let blockId = params['blockId'];
+      this.fetchLabs(blockId);
+    });
   }
 
-  private fetchLabs(): void {
-    // Precisamos mudar esta parte para ser dinamico.
-    // O id, que eh esta string ai, precisa ser passado pela pagina anterior (Blocks)
-    this.labs$ = this.blockService.getLabs('6518ce3e744e7c039ae5afc0');
+  private fetchLabs(blockId: string): void {
+    this.labs$ = this.blockService.getLabs(blockId);
   }
 }

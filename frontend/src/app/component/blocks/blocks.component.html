@@ -6,7 +6,7 @@
   <app-button
     *ngFor="let block of blocks$ | async"
     [buttonName]="block.name!"
-    routerLink="/laboratories"
+    (click)="navigateToLabs(block._id!)"
   >
   </app-button>
 </div>
