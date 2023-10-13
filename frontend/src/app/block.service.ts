@@ -37,7 +37,7 @@ export class BlockService {
     return this.httpClient.get<Block>(`${this.url}/blocks/${id}`);
   }
 
-  getLabs(idBlock: string, idLab: string): Observable<Laboratory[]> {
+  getLabs(idBlock: string): Observable<Laboratory[]> {
     this.refreshLabs(idBlock);
     return this.labs$;
   }
