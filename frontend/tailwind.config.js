@@ -7,7 +7,8 @@ module.exports = {
         '191': '191px',
         '259': '259px',
         '282': '282px',
-        '287': '287px'
+        '287': '287px',
+        '70': '70vw',
       },
       height: {
         '28': '28px',
@@ -33,6 +34,9 @@ module.exports = {
       },
       boxShadow: {
         'custom': '4px 5px 10px 0 rgba(0, 0, 0, 0.5)'
+      },
+      margin: {
+        '66': '66vw',
       },
     },
   },
