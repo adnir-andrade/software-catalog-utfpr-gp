@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent {
+  soli = 'Solicitante';
 
+  softwares = ['Docker', 'VsCode', 'Mongo'];
+  sistemas = ['Linux', 'Windows'];
 }

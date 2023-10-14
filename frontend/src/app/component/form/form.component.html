@@ -1,15 +1,16 @@
 
 <form class="bg-gradient-to-b from-marrom-form to-cinza-meia-noite text-center text-white rounded-md w-5/6 sm:w-11/12 h-4/4 grid grid-cols-1 p-3 gap-3 place-items-center mx-auto relative" action="submit">
     <h1>Adicione um Software</h1>
-    <app-input></app-input>
-    <app-select></app-select>
-    <app-input></app-input>
-    <app-input></app-input>
-    <app-input></app-input>
-    <app-input></app-input>
-    <app-select></app-select>
-    <app-select></app-select>
+    <app-input [description]="'Solicitante'"></app-input>
+    <app-select [description]="'Software'"></app-select>
+    <app-input [description]="'Versão'"></app-input>
+    <app-input [description]="'Idioma'"></app-input>
+    <app-input [description]="'Espaço de Disco'"></app-input>
+    <app-select [description]="'Sistema Operacional'"></app-select>
+    <app-select [description]="'Tipo de Licença'"></app-select>
     <div class="">
-        <img src="../../../assets/imgs/accept.svg" alt="acesso" class="w-10 ml-66 sm:ml-320">
+        <button type="submit">
+            <img src="../../../assets/imgs/accept.svg" alt="acesso" class="w-10 ml-66 sm:ml-320">
+        </button>
     </div>
 </form>
