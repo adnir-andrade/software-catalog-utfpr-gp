@@ -1,6 +1,12 @@
 <div class="flex flex-col">
-    <label for="descricao">{{ description }}</label>
-    <select name="software" id="software" class="rounded-sm w-64 h-7 sm:w-80 md:w-287">
-        <option *ngFor="let software of softwares" class="text-black">{{ software }}</option>
-    </select>
+  <label for="descricao">{{ description }}</label>
+  <select
+    name="software"
+    id="software"
+    class="rounded-sm text-black h-7 sm:w-80 md:w-287"
+  >
+    <option *ngFor="let software of softwares">
+      {{ software }}
+    </option>
+  </select>
 </div>
