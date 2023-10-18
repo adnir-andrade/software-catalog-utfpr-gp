@@ -17,6 +17,7 @@ import { LaboratoriesComponent } from './component/laboratories/laboratories.com
 import { FormComponent } from './component/form/form.component';
 import { InputComponent } from './component/input/input.component';
 import { SelectComponent } from './component/select/select.component';
+import { SoftwareListComponent } from './component/software-list/software-list.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { SelectComponent } from './component/select/select.component';
     FormComponent,
     InputComponent,
     SelectComponent,
+    SoftwareListComponent,
   ],
   imports: [
     AppRoutingModule,
