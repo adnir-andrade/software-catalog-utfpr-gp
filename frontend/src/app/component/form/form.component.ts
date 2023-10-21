@@ -7,7 +7,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent {
-  value: string = '';
+  professor: any = '';
 
   softwares = ['Docker', 'VsCode', 'Mongo'];
   systems = ['Linux', 'Windows', 'Ambos'];

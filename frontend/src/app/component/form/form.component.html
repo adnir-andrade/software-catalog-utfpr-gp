@@ -12,10 +12,23 @@
       name="solicitante"
       placeholder="Solicitante"
       class="rounded-sm text-black"
-      ngModel
+      [(ngModel)]="professor.name"
+      #solicitante="ngModel"
       pattern="^[A-Za-z\s]+$"
       required
     />
+
+    <div
+      *ngIf="solicitante.invalid && (solicitante.dirty || solicitante.touched)"
+      class="alert"
+    >
+      <div *ngIf="solicitante.errors?.['required']">
+        Necessário informar solicitante
+      </div>
+      <div *ngIf="solicitante.errors?.['pattern']">
+        Não é possível incluir números no nome.
+      </div>
+    </div>
 
     <label for="software">Softwares</label>
     <select name="software" id="software" class="rounded-sm text-black" ngModel>
@@ -68,6 +81,7 @@
       </option>
     </select>
 
+    <!-- TODO: Make button semi-transparent if invalid -->
     <button
       class="justify-self-end mt-4 bg-cover h-10 w-10 icone"
       type="submit"
