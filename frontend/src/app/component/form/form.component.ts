@@ -7,22 +7,24 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent {
-  professor: any = '';
+  solicitanteInput: string = '';
+  softwareInput: string = '';
 
   softwares = ['Docker', 'VsCode', 'Mongo'];
   systems = ['Linux', 'Windows', 'Ambos'];
   licensesType = ['Livre', 'Paga', 'Open Source'];
 
   onSubmit(form: NgForm) {
-    const value = form.value;
-    console.log(form);
-    console.log('Submit!');
-    console.log('Solicitante: ' + value.solicitante);
-    console.log('Softwares: ' + value.software);
-    console.log('Versão: ' + value.version);
-    console.log('Idioma: ' + value.language);
-    console.log('Espaço em Disco: ' + value.size);
-    console.log('Sistema Operacional: ' + value.os);
-    console.log('Tipo de Licença: ' + value.license);
+    const inputField = form.value;
+
+    const newSolicitation: { [key: string]: string } = {};
+
+    for (const attribute in inputField) {
+      if (inputField[attribute]) {
+        newSolicitation[attribute] = inputField[attribute];
+      }
+    }
+
+    console.log(newSolicitation);
   }
 }
