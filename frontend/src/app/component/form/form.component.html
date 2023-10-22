@@ -6,27 +6,27 @@
 >
   <div class="grid w-full px-10 sm:px-24 lg:px-64">
     <h1>Adicione um Software</h1>
-    <label for="solicitante">Solicitante*</label>
+    <label for="requester">Solicitante*</label>
     <input
       type="text"
-      id="solicitante"
-      name="solicitante"
+      id="requester"
+      name="requester"
       placeholder="Solicitante"
       class="rounded-sm text-black"
       [(ngModel)]="solicitanteInput"
-      #solicitante="ngModel"
+      #requester="ngModel"
       pattern="^[A-Za-z\s]+$"
       required
     />
 
     <div
-      *ngIf="solicitante.invalid && (solicitante.dirty || solicitante.touched)"
+      *ngIf="requester.invalid && (requester.dirty || requester.touched)"
       class="alert"
     >
-      <div *ngIf="solicitante.errors?.['required']">
+      <div *ngIf="requester.errors?.['required']">
         Necessário informar solicitante
       </div>
-      <div *ngIf="solicitante.errors?.['pattern']">
+      <div *ngIf="requester.errors?.['pattern']">
         Não é possível incluir números no nome.
       </div>
     </div>

@@ -1,13 +1,13 @@
 export interface Software {
-  name?: string;
+  software?: string;
   version?: string;
   language?: string;
   os?: string;
-  hdSpace?: string;
-  licenseType?: string;
-  id_professor?: string;
+  size?: string;
+  license?: string;
+  requester?: string;
   lab?: string;
   block?: string;
-  data?: Date;
+  date?: Date;
   _id?: string;
 }

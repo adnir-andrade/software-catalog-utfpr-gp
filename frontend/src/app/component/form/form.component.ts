@@ -25,6 +25,14 @@ export class FormComponent {
       }
     }
 
+    /*
+      Idea:
+        Create - in block.routes.ts (backend) - a route to POST this object taking a block/lab ID
+        In blockservice.ts, create a function to link this POST function with the frontend
+        Call this function here - It will have to be passed as an argument to the function that will call POST
+
+    */
+
     console.log(newSolicitation);
   }
 }

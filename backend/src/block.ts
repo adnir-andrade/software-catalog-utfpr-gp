@@ -16,13 +16,13 @@ export interface Laboratory {
 
 export interface Software {
   _id: mongodb.ObjectId;
-  name: string;
+  software: string;
   version: string;
   language: string;
   os: string;
-  hdSpace: string;
-  licenseType: string;
-  id_professor: string;
+  size: string;
+  license: string;
+  requester: string;
   lab: string;
   block: string;
   data: Date;
