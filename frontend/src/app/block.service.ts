@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, tap } from 'rxjs';
 import { Block } from './block';
 import { Laboratory } from './laboratory';
+import { Software } from './software';
 
 @Injectable({
   providedIn: 'root',
@@ -59,4 +60,21 @@ export class BlockService {
       responseType: 'text',
     });
   }
+
+  // Softwares
+
+  addSoftware(
+    blockId: string,
+    labId: string,
+    software: Software
+  ): Observable<string> {
+    return this.httpClient.put(
+      `${this.url}/blocks/${blockId}/labs/${labId}/softwares/add-request`,
+      software,
+      {
+        responseType: 'text',
+      }
+    );
+  }
 }
+//'/:id_block/labs/:id_lab/softwares/addSoftware',

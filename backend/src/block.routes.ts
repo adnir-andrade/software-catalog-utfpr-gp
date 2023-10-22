@@ -15,16 +15,16 @@ router.get('/', async (_req, res) => {
   }
 });
 
-const getBlock = (id : string) => {
-  const query = { _id : new mongodb.ObjectId(id) };
+const getBlock = (id: string) => {
+  const query = { _id: new mongodb.ObjectId(id) };
   return collections.blocks.findOne(query);
 };
 
-const getLab = (block : Block, id : string) => {
+const getLab = (block: Block, id: string) => {
   return block?.laboratories[parseInt(id)];
 };
 
-const getSoftware = (lab : Laboratory, id : string) => {
+const getSoftware = (lab: Laboratory, id: string) => {
   return lab?.softwares[parseInt(id)];
 };
 
@@ -124,7 +124,7 @@ router.get('/:id_block/labs/:id_lab', async (req, res) => {
     const idBlock = req?.params?.id_block;
     const idLab = req?.params?.id_lab;
     const block = await getBlock(idBlock);
-    const lab : Laboratory = getLab(block, idLab);
+    const lab: Laboratory = getLab(block, idLab);
 
     if (lab) {
       res.status(200).send(lab);
@@ -143,7 +143,7 @@ router.get('/:id_block/labs/:id_lab/softwares', async (req, res) => {
     const idLab = req?.params?.id_lab;
 
     const block = await getBlock(idBlock);
-    const lab : Laboratory = getLab(block, idLab);
+    const lab: Laboratory = getLab(block, idLab);
     const softwares = lab.softwares || [];
 
     if (softwares) {
@@ -156,22 +156,59 @@ router.get('/:id_block/labs/:id_lab/softwares', async (req, res) => {
   }
 });
 
-router.get('/:id_block/labs/:id_lab/softwares/:id_software', async (req, res) => {
-  try {
-    const idBlock = req?.params?.id_block;
-    const idLab = req?.params?.id_lab;
-    const idSoftware = req?.params?.id_software;
+router.get(
+  '/:id_block/labs/:id_lab/softwares/:id_software',
+  async (req, res) => {
+    try {
+      const idBlock = req?.params?.id_block;
+      const idLab = req?.params?.id_lab;
+      const idSoftware = req?.params?.id_software;
 
-    const block = await getBlock(idBlock);
-    const lab : Laboratory = getLab(block, idLab);
-    const software : Software = getSoftware(lab, idSoftware);
+      const block = await getBlock(idBlock);
+      const lab: Laboratory = getLab(block, idLab);
+      const software: Software = getSoftware(lab, idSoftware);
 
-    if (software) {
-      res.status(200).send(software);
-    } else {
-      res.status(404).send(`Failed to find a block: ID ${idBlock}`);
+      if (software) {
+        res.status(200).send(software);
+      } else {
+        res.status(404).send(`Failed to find a block: ID ${idBlock}`);
+      }
+    } catch (error) {
+      res
+        .status(404)
+        .send(`Failed to find a block: ID ${req?.params?.id_block}`);
     }
-  } catch (error) {
-    res.status(404).send(`Failed to find a block: ID ${req?.params?.id_block}`);
   }
-});
+);
+
+router.put(
+  '/:id_block/labs/:id_lab/softwares/addSoftware',
+  async (req, res) => {
+    try {
+      const idBlock = req?.params?.id_block;
+      const idLab = req?.params?.id_lab;
+
+      const block = await getBlock(idBlock);
+      const lab: Laboratory = getLab(block, idLab);
+      const newRequisition = req.body;
+      const query = {
+        _id: new mongodb.ObjectId(idBlock),
+        // TODO: Change 'Lab B6' to lab_id
+        'laboratories.name': 'Lab B6',
+      };
+      const result = await collections.blocks.updateOne(query, {
+        $push: newRequisition,
+      });
+
+      if (result && result.matchedCount) {
+        res.status(200).send(`Updated a software list: ID ${id}.`);
+      } else if (!result.matchedCount) {
+        res.status(404).send(`Failed to find a software list: ID ${id}`);
+      } else {
+        res.status(304).send(`Failed to update a software list: ID ${id}`);
+      }
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+  }
+);
