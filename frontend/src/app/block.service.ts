@@ -68,11 +68,19 @@ export class BlockService {
     labId: string,
     software: Software
   ): Observable<string> {
+    console.log('Inside add software. ' + JSON.stringify(software));
+    console.log(
+      `${this.url}/blocks/${blockId}/labs/${labId}/softwares/add-request`
+    );
+
     return this.httpClient.put(
       `${this.url}/blocks/${blockId}/labs/${labId}/softwares/add-request`,
-      software,
+      JSON.stringify(software), // Convert the object to a JSON string
       {
         responseType: 'text',
+        headers: {
+          'Content-Type': 'application/json', // Set the content type to JSON
+        },
       }
     );
   }

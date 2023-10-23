@@ -32,8 +32,16 @@ export class FormComponent {
     localStorage.setItem('newRequest', requestJson);
     console.log(JSON.parse(localStorage.getItem('newRequest') as string));
 
-    // this.addRequisition(this.blockId, this.labId, newSolicitation);
-    // console.log(newSolicitation);
+    const newSolicitation: Software = {
+      software: 'New Software',
+      license: 'Paga',
+      os: 'Qualquer',
+      requester: 'Adnir Andrade',
+      block: 'Bloco B6',
+      date: new Date(),
+    };
+
+    this.addRequisition(this.blockId, this.labId, newSolicitation);
   }
 
   private addRequisition(
@@ -41,6 +49,17 @@ export class FormComponent {
     labId: string,
     newRequest: Software
   ): void {
-    this.blockService.addSoftware(blockId, labId, newRequest).subscribe;
+    console.log('Calling addSoftware');
+    this.blockService.addSoftware(blockId, labId, newRequest).subscribe(
+      (response: string) => {
+        // Handle the response here, such as displaying a success message
+        console.log('Response from server:', response);
+        // You can also perform any additional actions based on the response
+      },
+      (error) => {
+        // Handle errors here, such as displaying an error message
+        console.error('Error:', error);
+      }
+    );
   }
 }
