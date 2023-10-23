@@ -10,12 +10,14 @@ import { Software } from 'src/app/software';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent {
+  // TODO: Update those two to get the exact IDs from it's respective parent components
   labId: string = '0';
   blockId: string = '65289cb0693270ff25fc0c81';
 
   solicitanteInput: string = '';
   softwareInput: string = '';
 
+  // TODO: Update those to get a list from the database
   softwares = ['Docker', 'VsCode', 'Mongo'];
   systems = ['Linux', 'Windows', 'Ambos'];
   licensesType = ['Livre', 'Paga', 'Open Source'];
@@ -28,18 +30,19 @@ export class FormComponent {
   onSubmit(form: NgForm) {
     const inputField = form.value;
 
-    const requestJson = JSON.stringify(inputField);
-    localStorage.setItem('newRequest', requestJson);
-    console.log(JSON.parse(localStorage.getItem('newRequest') as string));
-
     const newSolicitation: Software = {
-      software: 'New Software',
-      license: 'Paga',
-      os: 'Qualquer',
-      requester: 'Adnir Andrade',
       block: 'Bloco B6',
       date: new Date(),
     };
+
+    for (const [key, value] of Object.entries(inputField)) {
+      const inputValue: string & Date = value as string & Date;
+
+      if (value) {
+        console.log('Has value');
+        newSolicitation[key as keyof Software] = inputValue;
+      }
+    }
 
     this.addRequisition(this.blockId, this.labId, newSolicitation);
   }
@@ -50,16 +53,13 @@ export class FormComponent {
     newRequest: Software
   ): void {
     console.log('Calling addSoftware');
-    this.blockService.addSoftware(blockId, labId, newRequest).subscribe(
-      (response: string) => {
-        // Handle the response here, such as displaying a success message
+    this.blockService.addSoftware(blockId, labId, newRequest).subscribe({
+      next: (response: string) => {
         console.log('Response from server:', response);
-        // You can also perform any additional actions based on the response
       },
-      (error) => {
-        // Handle errors here, such as displaying an error message
+      error: (error) => {
         console.error('Error:', error);
-      }
-    );
+      },
+    });
   }
 }

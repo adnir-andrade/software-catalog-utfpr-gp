@@ -160,30 +160,30 @@ router.get('/:id_block/labs/:id_lab/softwares', async (req, res) => {
   }
 });
 
-// router.get(
-//   '/:id_block/labs/:id_lab/softwares/:id_software',
-//   async (req, res) => {
-//     try {
-//       const idBlock = req?.params?.id_block;
-//       const idLab = req?.params?.id_lab;
-//       const idSoftware = req?.params?.id_software;
+router.get(
+  '/:id_block/labs/:id_lab/softwares/:id_software',
+  async (req, res) => {
+    try {
+      const idBlock = req?.params?.id_block;
+      const idLab = req?.params?.id_lab;
+      const idSoftware = req?.params?.id_software;
 
-//       const block = await getBlock(idBlock);
-//       const lab: Laboratory = getLab(block, idLab);
-//       const software: Software = getSoftware(lab, idSoftware);
+      const block = await getBlock(idBlock);
+      const lab: Laboratory = getLab(block, idLab);
+      const software: Software = getSoftware(lab, idSoftware);
 
-//       if (software) {
-//         res.status(200).send(software);
-//       } else {
-//         res.status(404).send(`Failed to find a software: ID ${idBlock}`);
-//       }
-//     } catch (error) {
-//       res
-//         .status(404)
-//         .send(`Failed to find a software: ID ${req?.params?.id_block}`);
-//     }
-//   }
-// );
+      if (software) {
+        res.status(200).send(software);
+      } else {
+        res.status(404).send(`Failed to find a software: ID ${idBlock}`);
+      }
+    } catch (error) {
+      res
+        .status(404)
+        .send(`Failed to find a software: ID ${req?.params?.id_block}`);
+    }
+  }
+);
 
 router.put(
   '/:id_block/labs/:id_lab/softwares/add-request',
@@ -195,10 +195,14 @@ router.put(
       const block = await getBlock(idBlock);
       const lab: Laboratory = getLab(block, idLab);
       const newRequisition = req.body;
-      console.log(newRequisition);
+
+      console.log(
+        `Attenpting to register the following object to ${lab.name}: ` +
+          newRequisition
+      );
+
       const query = {
         _id: new mongodb.ObjectId(block._id),
-        // TODO: Check if lab.name is the correct name
         'laboratories.name': lab.name,
       };
       const result = await collections.blocks.updateOne(query, {
@@ -208,7 +212,7 @@ router.put(
       });
 
       if (result && result.matchedCount) {
-        res.status(200).send(`Updated a software list in Lab ${lab}.`);
+        res.status(200).send(`Updated a software list in ${lab.name}.`);
       } else if (!result.matchedCount) {
         res.status(404).send(`Failed to find a software list in Lab ${lab}`);
       } else {
