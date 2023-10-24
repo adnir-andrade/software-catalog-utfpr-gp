@@ -23,6 +23,6 @@ export class BlocksComponent implements OnInit {
   }
 
   navigateToLabs(blockId: string): void {
-    this.router.navigate([blockId, 'labs']);
+    this.router.navigate(['blocos', blockId, 'labs']);
   }
 }

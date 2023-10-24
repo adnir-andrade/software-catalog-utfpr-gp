@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Laboratory } from '../../laboratory';
 import { BlockService } from '../../block.service';
@@ -11,20 +12,26 @@ import { BlockService } from '../../block.service';
 })
 export class LaboratoriesComponent implements OnInit {
   labs$: Observable<Laboratory[]> = new Observable();
+  blockId: string = '';
 
   constructor(
     private blockService: BlockService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      let blockId = params['blockId'];
-      this.fetchLabs(blockId);
+      this.blockId = params['blockId'];
+      this.fetchLabs(this.blockId);
     });
   }
 
   private fetchLabs(blockId: string): void {
     this.labs$ = this.blockService.getLabs(blockId);
+  }
+
+  navigateToSoftwares(labId: number): void {
+    this.router.navigate(['blocos', this.blockId, 'labs', labId, 'softwares']);
   }
 }
