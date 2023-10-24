@@ -56,6 +56,16 @@ export class FormComponent {
     this.addRequisition(this.blockId, this.labId, newSolicitation);
   }
 
+  navigateToSoftwares(): void {
+    this.router.navigate([
+      'blocos',
+      this.blockId,
+      'labs',
+      this.labId,
+      'softwares',
+    ]);
+  }
+
   private addRequisition(
     blockId: string,
     labId: string,
@@ -67,23 +77,11 @@ export class FormComponent {
     this.blockService.addSoftware(blockId, labId, newRequest).subscribe({
       next: (response: string) => {
         console.log('Response from server:', response);
+        this.navigateToSoftwares();
       },
       error: (error) => {
         console.error('Error:', error);
       },
     });
-  }
-
-  //TODO: Pablo, vou mudar isto aqui depois. navigateToSoftware esta cortando a interacao do formulario com o banco, preciso
-  // dar um jeito de ativar a funcao apenas APOS acabar addRequisition.
-
-  navigateToSoftwares(): void {
-    this.router.navigate([
-      'blocos',
-      this.blockId,
-      'labs',
-      this.labId,
-      'softwares',
-    ]);
   }
 }
