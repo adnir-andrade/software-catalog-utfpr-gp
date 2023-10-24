@@ -1,28 +1,13 @@
-<div class="collapse bg-base-200">
-    <input type="radio" name="my-accordion-1" checked="checked" /> 
-    <div class="collapse-title text-xl font-medium">
-      Click to open this one and close others
-    </div>
-    <div class="collapse-content"> 
-      <p>hello</p>
-    </div>
+<div *ngFor="let title of title" (click)="teste()">
+  {{ title }}
+</div>
+
+<!-- <div id="acordeao" class="collapse bg-base-200" *ngFor="let title of title">
+  <input type="checkbox" />
+  <div class="collapse-title text-xl font-medium">
+    {{ title }}
   </div>
-  <div class="collapse bg-base-200">
-    <input type="radio" name="my-accordion-1" /> 
-    <div class="collapse-title text-xl font-medium">
-      Click to open this one and close others
-    </div>
-    <div class="collapse-content"> 
-        <div class="overflow-x-auto">
-        </div>
-    </div>
+  <div class="collapse-content" *ngFor="let software of softwares">
+    {{ software.nome }}
   </div>
-  <div class="collapse bg-base-200">
-    <input type="radio" name="my-accordion-1" /> 
-    <div class="collapse-title text-xl font-medium">
-      Click to open this one and close others
-    </div>
-    <div class="collapse-content"> 
-      <p>hello</p>
-    </div>
-  </div>
+</div> -->

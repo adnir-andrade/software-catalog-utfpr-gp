@@ -17,6 +17,7 @@ import { MainComponent } from './component/main/main.component';
 import { LaboratoriesComponent } from './component/laboratories/laboratories.component';
 import { FormComponent } from './component/form/form.component';
 import { SoftwareListComponent } from './component/software-list/software-list.component';
+import { TableComponent } from './component/table/table.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { SoftwareListComponent } from './component/software-list/software-list.c
     LaboratoriesComponent,
     FormComponent,
     SoftwareListComponent,
+    TableComponent,
   ],
   imports: [
     AppRoutingModule,

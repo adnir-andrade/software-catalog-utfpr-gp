@@ -7,6 +7,7 @@ import { MainComponent } from './component/main/main.component';
 import { BlocksComponent } from './component/blocks/blocks.component';
 import { LaboratoriesComponent } from './component/laboratories/laboratories.component';
 import { FormComponent } from './component/form/form.component';
+import { SoftwareListComponent } from './component/software-list/software-list.component';
 
 const routes: Routes = [
   { path: 'nav-bar', component: NavBarComponent },
@@ -16,7 +17,10 @@ const routes: Routes = [
   { path: 'blocos', component: BlocksComponent },
   { path: 'blocos/:blockId/labs', component: LaboratoriesComponent },
   { path: 'form', component: FormComponent },
-  { path: 'blocos/:blockId/labs/:labId/softwares', component: FormComponent },
+  {
+    path: 'blocos/:blockId/labs/:labId/softwares',
+    component: SoftwareListComponent,
+  },
   {
     path: 'blocos/:blockId/labs/:labId/softwares/form',
     component: FormComponent,
