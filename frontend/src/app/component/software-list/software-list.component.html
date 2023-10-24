@@ -5,3 +5,12 @@
   type="submit"
   (click)="navigateToForm()"
 ></button>
+
+<app-button
+  *ngFor="let software of softwares$ | async"
+  [buttonName]="software.os!"
+  class="flex justify-center mx-20"
+  (click)="navigateToForm()"
+  routerLink="/form"
+>
+</app-button>

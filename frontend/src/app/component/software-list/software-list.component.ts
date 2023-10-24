@@ -24,7 +24,13 @@ export class SoftwareListComponent {
     this.route.params.subscribe((params) => {
       this.blockId = params['blockId'];
       this.labId = params['labId'];
+
+      this.fetchSoftwares(this.blockId, this.labId);
     });
+  }
+
+  private fetchSoftwares(blockId: string, labId: string): void {
+    this.softwares$ = this.blockService.getSoftwares(blockId, labId);
   }
 
   navigateToForm(): void {

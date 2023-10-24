@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BlockService } from '../../block.service';
 import { Software } from 'src/app/software';
 
@@ -11,8 +11,8 @@ import { Software } from 'src/app/software';
 })
 export class FormComponent {
   // TODO: Update those two to get the exact IDs from it's respective parent components
-  labId: string = '0';
-  blockId: string = '65289cb0693270ff25fc0c81';
+  labId: string = '';
+  blockId: string = '';
 
   solicitanteInput: string = '';
   softwareInput: string = '';
@@ -24,13 +24,22 @@ export class FormComponent {
 
   constructor(
     private blockService: BlockService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.blockId = params['blockId'];
+      this.labId = params['labId'];
+    });
+  }
 
   onSubmit(form: NgForm) {
     const inputField = form.value;
 
     const newSolicitation: Software = {
+      // TODO: Change this to be dynamic
       block: 'Bloco B6',
       date: new Date(),
     };
@@ -53,6 +62,8 @@ export class FormComponent {
     newRequest: Software
   ): void {
     console.log('Calling addSoftware');
+    console.log('Sending block id: ' + blockId);
+    console.log('Sending labId: ' + labId);
     this.blockService.addSoftware(blockId, labId, newRequest).subscribe({
       next: (response: string) => {
         console.log('Response from server:', response);
@@ -61,5 +72,18 @@ export class FormComponent {
         console.error('Error:', error);
       },
     });
+  }
+
+  //TODO: Pablo, vou mudar isto aqui depois. navigateToSoftware esta cortando a interacao do formulario com o banco, preciso
+  // dar um jeito de ativar a funcao apenas APOS acabar addRequisition.
+
+  navigateToSoftwares(): void {
+    this.router.navigate([
+      'blocos',
+      this.blockId,
+      'labs',
+      this.labId,
+      'softwares',
+    ]);
   }
 }
