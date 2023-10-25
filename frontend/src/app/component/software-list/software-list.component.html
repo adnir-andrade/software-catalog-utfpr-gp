@@ -1,16 +1,20 @@
 <app-banner class="text-center flex justify-center"></app-banner>
 <app-accordion [title]="'title'" class="mb-4"></app-accordion>
-<button
-  class="justify-self-end mt-4 bg-cover h-10 w-10 icone"
-  type="submit"
-  (click)="navigateToForm()"
-></button>
 
-<app-table
+<div class="grid gap-4 grid-cols-1 place-items-center">
+  <app-table
   *ngFor="let requisition of requisitions$ | async"
   [requester]="requisition.requester!"
   [os]="requisition.os!"
   [version]="requisition.version!"
   [license]="requisition.license!"
   [date]="requisition.date!"
-></app-table>
+  ></app-table>
+  
+  <button
+    class="mt-4 bg-cover h-10 w-10 icone"
+    type="submit"
+    (click)="navigateToForm()"
+  ></button>
+</div>
+  
