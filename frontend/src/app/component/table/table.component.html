@@ -20,6 +20,11 @@
         <th>Tipo de Licença</th>
         <td>{{ license }}</td>
       </tr>
+
+      <tr>
+        <th>Data da Solicitação</th>
+        <td>{{ convertedDate | date:'shortDate'}}</td>
+      </tr>
     </tbody>
   </table>
 </div>
