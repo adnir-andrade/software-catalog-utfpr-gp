@@ -6,6 +6,8 @@
   (click)="navigateToForm()"
 ></button>
 
+<app-table></app-table>
+
 <app-button
   *ngFor="let software of softwares$ | async"
   [buttonName]="software.os!"
