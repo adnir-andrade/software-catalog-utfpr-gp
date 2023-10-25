@@ -6,13 +6,10 @@
   (click)="navigateToForm()"
 ></button>
 
-<app-table></app-table>
-
-<app-button
-  *ngFor="let software of softwares$ | async"
-  [buttonName]="software.os!"
-  class="flex justify-center mx-20"
-  (click)="navigateToForm()"
-  routerLink="/form"
->
-</app-button>
+<app-table
+  *ngFor="let requisition of requisitions$ | async"
+  [requester]="requisition.requester!"
+  [os]="requisition.os!"
+  [version]="requisition.version!"
+  [license]="requisition.license!"
+></app-table>

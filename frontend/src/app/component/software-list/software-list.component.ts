@@ -10,7 +10,7 @@ import { Software } from 'src/app/software';
   styleUrls: ['./software-list.component.css'],
 })
 export class SoftwareListComponent {
-  softwares$: Observable<Software[]> = new Observable();
+  requisitions$: Observable<Software[]> = new Observable();
   blockId: string = '';
   labId: string = '';
 
@@ -30,7 +30,7 @@ export class SoftwareListComponent {
   }
 
   private fetchSoftwares(blockId: string, labId: string): void {
-    this.softwares$ = this.blockService.getSoftwares(blockId, labId);
+    this.requisitions$ = this.blockService.getSoftwares(blockId, labId);
   }
 
   navigateToForm(): void {
