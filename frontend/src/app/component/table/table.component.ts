@@ -10,6 +10,7 @@ export class TableComponent {
   @Input({ required: true }) os!: string;
   @Input({ required: true }) version!: string;
   @Input({ required: true }) license!: string;
+  @Input({ required: true }) language?: string;
   @Input({ required: true }) date!: Date;
   
   convertedDate : Date = new Date();

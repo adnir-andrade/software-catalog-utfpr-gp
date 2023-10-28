@@ -23,6 +23,11 @@
             <td>{{ license }}</td>
           </tr>
 
+          <tr *ngIf="language !== undefined">
+            <th>Linguagem</th>
+            <td>{{ language }}</td>
+          </tr>
+
           <tr>
             <th>Data da Solicitação</th>
             <td>{{ convertedDate | date : "d/M/y" }}</td>
