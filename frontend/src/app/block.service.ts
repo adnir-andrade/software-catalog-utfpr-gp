@@ -12,6 +12,7 @@ export class BlockService {
   private url = 'http://localhost:5200';
   private blocks$: Subject<Block[]> = new Subject();
   private labs$: Subject<Laboratory[]> = new Subject();
+  private softwares$: Subject<Software[]> = new Subject();
 
   constructor(private httpClient: HttpClient) {}
 
@@ -26,6 +27,14 @@ export class BlockService {
       .get<Laboratory[]>(`${this.url}/blocks/${blockId}/labs`)
       .subscribe((labs) => {
         this.labs$.next(labs);
+      });
+  }
+
+  private refreshSoftwares(blockId: string, labId: string) {
+    this.httpClient
+      .get<Software[]>(`${this.url}/blocks/${blockId}/labs/${labId}/softwares`)
+      .subscribe((softwares) => {
+        this.softwares$.next(softwares);
       });
   }
 
@@ -62,6 +71,11 @@ export class BlockService {
   }
 
   // Softwares
+
+  getSoftwares(idBlock: string, idLab: string): Observable<Software[]> {
+    this.refreshSoftwares(idBlock, idLab);
+    return this.softwares$;
+  }
 
   addSoftware(
     blockId: string,

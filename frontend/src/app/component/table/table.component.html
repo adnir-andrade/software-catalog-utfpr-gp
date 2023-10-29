@@ -1,22 +1,39 @@
-<div class="overflow-x-auto"><font></font>
-    <table class="table"><font></font>
-      <!-- head --><font></font>
-      <thead><font></font>
-        <tr><font></font>
-          <th>Versão</th><font></font>
-          <th>Idioma</th><font></font>
-          <th>OS</th><font></font>
-          <th>Solicitante</th><font></font>
-        </tr><font></font>
-      </thead><font></font>
-      <tbody><font></font>
-        <!-- row 1 --><font></font>
-        <tr><font></font>
-          <td>ultima versão</td><font></font>
-          <td>Qualquer</td><font></font>
-          <td>Windows || Linux</td><font></font>
-          <td>Roni Romano</td><font></font>
-        </tr><font></font>
-      </tbody><font></font>
-    </table><font></font>
+<div class="card w-96 bg-base-100 shadow-xl">
+  <div class="card-body">
+    <div class="card-actions justify-end">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Solicitante</th>
+            <td>{{ requester }}</td>
+          </tr>
+
+          <tr>
+            <th>Sistema Operacional</th>
+            <td>{{ os }}</td>
+          </tr>
+
+          <tr>
+            <th>Versão</th>
+            <td>{{ version }}</td>
+          </tr>
+
+          <tr>
+            <th>Tipo de Licença</th>
+            <td>{{ license }}</td>
+          </tr>
+
+          <tr *ngIf="language !== undefined">
+            <th>Linguagem</th>
+            <td>{{ language }}</td>
+          </tr>
+
+          <tr>
+            <th>Data da Solicitação</th>
+            <td>{{ convertedDate | date : "d/M/y" }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+</div>

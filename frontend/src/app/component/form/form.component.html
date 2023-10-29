@@ -32,19 +32,16 @@
     </div>
 
     <label for="software">Software*</label>
-    <select
-      name="software"
+    <input
+      type="text"
       id="software"
+      name="software"
+      placeholder="Software"
       class="rounded-sm text-black"
       [(ngModel)]="softwareInput"
       #softwareName="ngModel"
-      required
-    >
-      <option *ngFor="let software of softwares">
-        {{ software }}
-      </option>
-    </select>
-
+      ngModel
+    />
     <div
       *ngIf="
         softwareName.invalid && (softwareName.dirty || softwareName.touched)
