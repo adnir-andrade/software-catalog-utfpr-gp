@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class MainComponent {
   name = 'Iniciar';
+  titleText = 'Requisição de Softwares\nCOGETI/GP';
 }

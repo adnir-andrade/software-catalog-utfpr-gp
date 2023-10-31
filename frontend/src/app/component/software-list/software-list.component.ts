@@ -13,6 +13,7 @@ export class SoftwareListComponent {
   requisitions$: Observable<Software[]> = new Observable();
   blockId: string = '';
   labId: string = '';
+  labName: string = '';
 
   constructor(
     private blockService: BlockService,

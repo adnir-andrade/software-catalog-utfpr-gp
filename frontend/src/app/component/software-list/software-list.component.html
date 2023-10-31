@@ -1,4 +1,7 @@
-<app-banner class="text-center flex justify-center"></app-banner>
+<app-banner
+  class="text-center flex justify-center"
+  [title]="'Lab'"
+></app-banner>
 
 <div class="grid gap-4 grid-cols-1 place-items-center mb-5">
   <app-accordion
@@ -6,7 +9,7 @@
     [softwareName]="requisition.software!"
     class="mb-4"
   >
-    <app-table 
+    <app-table
       [requester]="requisition.requester!"
       [os]="requisition.os!"
       [version]="requisition.version!"
