@@ -1,22 +1,28 @@
-<!-- TODO: Make everything that is invalid red -->
 <form
-  class="bg-gradient-to-b from-marrom-form to-cinza-meia-noite text-center text-white rounded-md w-5/6 sm:w-11/12 md:w-2/3 lg:w-3/4 h-4/4 xl:h-3/5 grid grid-cols-1 p-3 gap-3 place-items-center mx-auto relative"
+  class="bg-gradient-to-b from-marrom-form to-cinza-meia-noite text-center text-white rounded-md w-5/6 sm:w-11/12 md:w-2/3 lg:w-3/4 grid grid-cols-1 p-3 gap-3 place-items-center mx-auto relative mb-20"
   (ngSubmit)="onSubmit(form)"
   #form="ngForm"
 >
-  <div class="grid w-full px-10 sm:px-24 lg:px-64">
-    <h1>Adicione um Software</h1>
-    <label for="requester">Solicitante*</label>
+  <div class="grid w-full max-w-screen-md px-10 sm:px-24">
+    <h1 class="text-2xl font-semibold">Adicione um Software</h1>
+    <label class="label">
+      <span class="label-text text-white text-lg">Solicitante</span>
+      <span class="label-text-alt text-white text-lg">*</span>
+    </label>
     <input
       type="text"
       id="requester"
       name="requester"
       placeholder="Solicitante"
-      class="rounded-sm text-black"
       [(ngModel)]="solicitanteInput"
       #requester="ngModel"
       pattern="^[A-Za-z\s]+$"
       required
+      [ngClass]="{
+        'input-error':
+          requester.invalid && (requester.dirty || requester.touched)
+      }"
+      class="input input-bordered text-black"
     />
 
     <div
@@ -31,17 +37,26 @@
       </div>
     </div>
 
-    <label for="software">Software*</label>
+    <label class="label">
+      <span class="label-text text-white text-lg">Software</span>
+      <span class="label-text-alt text-white text-lg">*</span>
+    </label>
     <input
       type="text"
       id="software"
       name="software"
       placeholder="Software"
-      class="rounded-sm text-black"
       [(ngModel)]="softwareInput"
       #softwareName="ngModel"
       ngModel
+      required
+      [ngClass]="{
+        'input-error':
+          softwareName.invalid && (softwareName.dirty || softwareName.touched)
+      }"
+      class="input input-bordered text-black"
     />
+
     <div
       *ngIf="
         softwareName.invalid && (softwareName.dirty || softwareName.touched)
@@ -53,61 +68,98 @@
       </div>
     </div>
 
-    <label for="version">Versão</label>
+    <label class="label">
+      <span class="label-text text-white text-lg">Versão</span>
+      <span class="label-text-alt text-white text-lg">*</span>
+    </label>
     <input
       type="text"
       id="version"
       name="version"
-      placeholder="Versão"
-      class="rounded-sm text-black"
+      placeholder="Qualquer"
       ngModel
+      class="input input-bordered text-black"
     />
 
-    <label for="language">Idioma</label>
+    <label class="label">
+      <span class="label-text text-white text-lg">Idioma</span>
+      <span class="label-text-alt text-white text-lg">*</span>
+    </label>
     <input
       type="text"
       id="language"
       name="language"
       placeholder="Idioma"
-      class="rounded-sm text-black"
       ngModel
+      class="input input-bordered text-black"
     />
 
-    <label for="size">Espaço em Disco</label>
+    <label class="label">
+      <span class="label-text text-white text-lg">Espaço em Disco</span>
+      <span class="label-text-alt text-white text-lg">*</span>
+    </label>
     <input
       type="text"
       id="size"
       name="size"
       placeholder="Espaço em Disco"
-      class="rounded-sm text-black"
       ngModel
+      class="input input-bordered text-black"
     />
 
-    <label for="os">Sistema Operacional*</label>
-    <select name="os" id="os" class="rounded-sm text-black" ngModel required>
+    <label for="os" class="label">
+      <span class="label-text text-white text-lg">Sistema Operacional</span>
+      <span class="label-text-alt text-white text-lg">*</span>
+    </label>
+    <select
+      name="os"
+      id="os"
+      class="select select-bordered text-black"
+      ngModel
+      required
+    >
+      <option disabled selected>Escolha</option>
       <option *ngFor="let os of systems">
         {{ os }}
       </option>
     </select>
 
-    <label for="license">Tipo de Licença*</label>
+    <label for="license" class="label">
+      <span class="label-text text-white text-lg">Tipo de Licença</span>
+      <span class="label-text-alt text-white text-lg">*</span>
+    </label>
     <select
       name="license"
       id="license"
-      class="rounded-sm text-black"
+      class="select select-bordered text-black"
       ngModel
       required
     >
+      <option disabled selected>Escolha</option>
       <option *ngFor="let license of licensesType">
         {{ license }}
       </option>
     </select>
 
-    <!-- TODO: Make button semi-transparent if invalid -->
     <button
-      class="justify-self-end mt-4 bg-cover h-10 w-10 icone"
+      class="justify-self-end mt-4 h-15 btn btn-success"
       type="submit"
       [disabled]="!form.valid"
-    ></button>
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="h-full"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    </button>
   </div>
 </form>

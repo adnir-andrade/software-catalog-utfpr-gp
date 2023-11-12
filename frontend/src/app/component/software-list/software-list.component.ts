@@ -13,7 +13,7 @@ export class SoftwareListComponent {
   requisitions$: Observable<Software[]> = new Observable();
   blockId: string = '';
   labId: string = '';
-  labName: string = '';
+  labName: string = 'Lab ?';
 
   constructor(
     private blockService: BlockService,
@@ -27,11 +27,22 @@ export class SoftwareListComponent {
       this.labId = params['labId'];
 
       this.fetchSoftwares(this.blockId, this.labId);
+      this.getLabName(this.blockId, this.labId);
     });
   }
 
   private fetchSoftwares(blockId: string, labId: string): void {
     this.requisitions$ = this.blockService.getSoftwares(blockId, labId);
+  }
+
+  private getLabName(blockId: string, labId: string): void {
+    this.blockService.getLab(blockId, labId).subscribe((lab) => {
+      if (lab) {
+        this.labName = lab.name!;
+      } else {
+        this.labName = 'Nenhum laboratório cadastrado';
+      }
+    });
   }
 
   navigateToForm(): void {

@@ -1,9 +1,25 @@
 <app-banner
   class="text-center flex justify-center"
-  [title]="'Lab Test'"
+  [title]="labName"
 ></app-banner>
 
-<div class="grid gap-4 grid-cols-1 place-items-center mb-5">
+<div class="grid gap-4 grid-cols-1 place-items-center mb-10">
+  <button type="submit" (click)="navigateToForm()">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-10 h-10 inline"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+      />
+    </svg>
+  </button>
   <app-accordion
     *ngFor="let requisition of requisitions$ | async"
     [softwareName]="requisition.software!"
@@ -18,10 +34,4 @@
       [date]="requisition.date!"
     ></app-table>
   </app-accordion>
-
-  <button
-    class="mt-4 bg-cover h-10 w-10 icone mb-10"
-    type="submit"
-    (click)="navigateToForm()"
-  ></button>
 </div>
