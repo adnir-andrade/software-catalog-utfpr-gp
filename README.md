@@ -15,7 +15,7 @@ O frontend da aplicação está sendo desenvolvido com Angular, Tailwind CSS e D
 
 ## Endereço de Deploy
 
-// Será atualizado ao final do projeto
+https://adnir-andrade.github.io/software-catalog-utfpr-gp/
 
 ## Protótipo
 
