@@ -9,7 +9,7 @@ import { Software } from './software';
   providedIn: 'root',
 })
 export class BlockService {
-  private url = 'http://localhost:5200';
+  private url = 'https://software-requisition-backend.onrender.com';
   private blocks$: Subject<Block[]> = new Subject();
   private labs$: Subject<Laboratory[]> = new Subject();
   private softwares$: Subject<Software[]> = new Subject();
