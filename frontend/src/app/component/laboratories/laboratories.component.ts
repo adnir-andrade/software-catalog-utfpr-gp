@@ -11,7 +11,8 @@ import { BlockService } from '../../block.service';
   styleUrls: ['./laboratories.component.css'],
 })
 export class LaboratoriesComponent implements OnInit {
-  labs$: Observable<Laboratory[]> = new Observable();
+  blockName = 'Bloco ?';
+  labs$: Laboratory[] = [];
   blockId: string = '';
 
   constructor(
@@ -28,7 +29,14 @@ export class LaboratoriesComponent implements OnInit {
   }
 
   private fetchLabs(blockId: string): void {
-    this.labs$ = this.blockService.getLabs(blockId);
+    this.blockService.getLabs(blockId).subscribe((labs) => {
+      this.labs$ = labs;
+      if (labs[0].block) {
+        this.blockName = labs[0].block;
+      } else {
+        this.blockName = 'Nenhum laboratório cadastrado';
+      }
+    });
   }
 
   navigateToSoftwares(labId: number): void {

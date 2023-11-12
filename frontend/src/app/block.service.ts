@@ -52,6 +52,12 @@ export class BlockService {
     return this.labs$;
   }
 
+  getLab(idBlock: string, idLab: string): Observable<Laboratory> {
+    return this.httpClient.get<Laboratory>(
+      `${this.url}/blocks/${idBlock}/labs/${idLab}`
+    );
+  }
+
   createBlock(block: Block): Observable<string> {
     return this.httpClient.post(`${this.url}/blocks`, block, {
       responseType: 'text',
