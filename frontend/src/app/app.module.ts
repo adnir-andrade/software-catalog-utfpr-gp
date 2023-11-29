@@ -18,6 +18,9 @@ import { LaboratoriesComponent } from './component/laboratories/laboratories.com
 import { FormComponent } from './component/form/form.component';
 import { SoftwareListComponent } from './component/software-list/software-list.component';
 import { TableComponent } from './component/table/table.component';
+import { AdminComponent } from './component/admin/admin.component';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,7 @@ import { TableComponent } from './component/table/table.component';
     FormComponent,
     SoftwareListComponent,
     TableComponent,
+    AdminComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -42,7 +46,7 @@ import { TableComponent } from './component/table/table.component';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
