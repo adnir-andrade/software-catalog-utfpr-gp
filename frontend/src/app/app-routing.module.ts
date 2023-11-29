@@ -8,6 +8,8 @@ import { BlocksComponent } from './component/blocks/blocks.component';
 import { LaboratoriesComponent } from './component/laboratories/laboratories.component';
 import { FormComponent } from './component/form/form.component';
 import { SoftwareListComponent } from './component/software-list/software-list.component';
+import { AdminComponent } from './component/admin/admin.component';
+import { AuthGuard } from './auth-guard.service';
 
 const routes: Routes = [
   { path: 'nav-bar', component: NavBarComponent },
@@ -17,6 +19,7 @@ const routes: Routes = [
   { path: 'blocos', component: BlocksComponent },
   { path: 'blocos/:blockId/labs', component: LaboratoriesComponent },
   { path: 'form', component: FormComponent },
+  { path: 'admin', canActivate: [AuthGuard], component: AdminComponent },
   {
     path: 'blocos/:blockId/labs/:labId/softwares',
     component: SoftwareListComponent,
