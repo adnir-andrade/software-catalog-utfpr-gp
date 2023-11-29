@@ -66,8 +66,9 @@
     ></label>
     <ul class="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
       <!-- Sidebar content here -->
-      <li><a>Sidebar Item 1</a></li>
-      <li><a>Sidebar Item 2</a></li>
+      <li><a (click)="logIn()">Clique aqui para Log In!</a></li>
+      <li><a (click)="logOut()">Clique aqui para Log Out!</a></li>
+      <li><a routerLink="/admin">Admin</a></li>
     </ul>
   </div>
 </header>
