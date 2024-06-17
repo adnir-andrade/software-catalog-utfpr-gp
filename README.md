@@ -14,7 +14,7 @@ O frontend da aplicação está sendo desenvolvido com Angular, Tailwind CSS e D
 - Executar o comando "ng serve"
 
 ## Endereço de Deploy
-
+(Backend esta hospedado gratuitamente, ha chances de que esteja indisponivel)
 https://adnir-andrade.github.io/software-catalog-utfpr-gp/
 
 ## Protótipo
